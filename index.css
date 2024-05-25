@@ -11,12 +11,14 @@ body {
 }
 .header {
   position: sticky;
+  z-index: 10;
   top: 0;
   left: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: linear-gradient(90deg, #0f0a0a, 50%, #B91219, #B91219);
   padding: 1rem 10%;
 }
 .header a img {
@@ -77,7 +79,8 @@ section {
 .members .content p {
   font-size: 25px;
 }
-.home .text-content .btn-cont button {
+.home .text-content .btn-cont button,
+.stream .image-information button {
   padding: 1rem 1.5rem;
   border: 2px solid #B91219;
   border-radius: 6px;
@@ -87,7 +90,8 @@ section {
   margin-right: 1rem;
   transition: 145ms ease;
 }
-.home .text-content .btn-cont button:hover {
+.home .text-content .btn-cont button:hover,
+.stream .image-information button:hover {
   background-color: #B91219;
   border: 2px solid #0f0a0a;
 }
@@ -161,22 +165,24 @@ section {
   animation-delay: 1200ms;
 }
 .home .image .image-set1 img:nth-child(8) {
-  top: -450px;
+  top: -420px;
   left: -140px;
   z-index: -5;
   animation-delay: 1400ms;
 }
 .members {
   overflow: hidden;
-  padding-top: 0;
-  margin-top: 15%;
+  padding-top: 5rem;
+  margin-top: 10%;
 }
-.members .heading {
+.members .heading,
+.stream .heading {
   text-align: center;
   font-size: 50px;
   font-weight: 500;
 }
-.members .heading span {
+.members .heading span,
+.stream .heading span {
   color: #ff0000;
 }
 .members .content {
@@ -243,4 +249,56 @@ section.start-animation .content .text p {
     opacity: 1;
     filter: blur(0);
   }
+}
+.stream .stream-cont {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5rem;
+  overflow: hidden;
+}
+.stream .stream-cont .image-information {
+  position: relative;
+  bottom: -400px;
+  width: 210px;
+  scale: .9;
+  transition: 145ms ease;
+}
+section.start-animation .stream-cont .image-information {
+  animation: bounceCont 4s ease infinite,
+             toTop 500ms ease forwards;
+  animation-delay: calc(400ms * var(--i));
+  opacity: 0;
+}
+@keyframes bounceCont {
+  0%,100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes toTop {
+  0% {
+    bottom: -400px;
+    opacity: 0;
+  }
+  100% {
+    bottom: 0;
+    top: 10px;
+    opacity: 1;
+  }
+}
+.stream .stream-cont .image-information:hover {
+  scale: 1;
+}
+.stream .stream-cont .image-information img {
+  display: block;
+  width: 100%;
+}
+.stream .stream-cont .image-information button {
+  display: block;
+  margin: 1rem auto;
+  border: 2px solid whitesmoke;
 }
